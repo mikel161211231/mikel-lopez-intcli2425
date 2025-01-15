@@ -8,7 +8,15 @@ export function filterByLevelRequirement(potions:Potion[], levelRequirement:numb
     return filteredPotions;
 }
 
+// Filtrar las pociones que tienen la rareza especificada
+export function getPotionsByRarity(potions:Potion[], rarity:string): Potion[] {
+    const filteredPotions: Potion[] = potions.filter((potion:Potion) => potion.rarity === rarity ) 
+
+    return filteredPotions;
+}
+
 
 module.exports = {
-    filterByLevelRequirement
+    filterByLevelRequirement,
+    getPotionsByRarity,
 }
