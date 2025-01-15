@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './index.css'
 import { Potion } from './types/Potion'
 import { potions } from './data/data'
 import PotionCard from './components/ItemCard'
 
 function App() {
-  const [potionList, setPotionList] = useState<Potion[]>(potions)
-
+  const [potionList, setPotionList] = useState<Potion[]>()
+useEffect(() => {
+  setPotionList(potionList)
+},[])
   return (
     <>
       <div className="">
