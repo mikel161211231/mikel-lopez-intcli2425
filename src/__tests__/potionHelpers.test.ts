@@ -1,5 +1,6 @@
 import { potions } from "../data/data";
-import { filterByLevelRequirement, getPotionsByRarity } from "../helpers/potionHelpers"
+import { filterByLevelRequirement, getPotionsByRarity, listIngredients } from "../helpers/potionHelpers"
+import { Potion } from "../types/Potion";
 
 
 
@@ -38,4 +39,35 @@ describe('Test the function getPotionsByRarity', () => {
         filteredPotions.map( potion => expect(potion.rarity).toBe("mythic"));
         expect(filteredPotions.length).toBe(2);
     })
+})
+
+
+describe('Test the function listIngredients', () => {
+
+    describe('Test with the first potion (Elixir of Eternal Flame) on the array of potions', () => {
+        const potion:Potion = {...potions[0]}
+        const ingredientsList = listIngredients(potion);
+        it('Ingredients list length is 3', () => {
+            expect(ingredientsList.length).toBe(3);
+        })
+        it('All ingredients names are on the ingredients list', () => {
+            expect(ingredientsList).toContain("Phoenix Feather");
+            expect(ingredientsList).toContain("Molten Ember");
+            expect(ingredientsList).toContain("Flameflower Extract");
+        })
+    })
+    
+    describe('Test with the five potion (Elixir of Arcane Surge) on the array of potions', () => {
+        const potion:Potion = {...potions[4]}
+        const ingredientsList = listIngredients(potion);
+        it('Ingredients list length is 3', () => {
+            expect(ingredientsList.length).toBe(3);
+        })
+        it('All ingredients names are on the ingredients list', () => {
+            expect(ingredientsList).toContain("Arcane Crystal");
+            expect(ingredientsList).toContain("Enchanted Powder");
+            expect(ingredientsList).toContain("Moonlit Dew");
+        })
+    })
+        
 })

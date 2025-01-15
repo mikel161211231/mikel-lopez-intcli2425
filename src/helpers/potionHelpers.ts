@@ -15,8 +15,18 @@ export function getPotionsByRarity(potions:Potion[], rarity:string): Potion[] {
     return filteredPotions;
 }
 
+// Devuelve una lista de nombres de ingredientes de una pocion especifica
+export function listIngredients(potion:Potion): string[] {
+    const ingredientsList: string[] = [];
+    
+    potion.ingredients.map(ingredient => ingredientsList.push(ingredient.name));
+
+    return ingredientsList;
+}
+
 
 module.exports = {
     filterByLevelRequirement,
     getPotionsByRarity,
+    listIngredients
 }
