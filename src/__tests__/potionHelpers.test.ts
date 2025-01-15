@@ -94,5 +94,14 @@ describe('Test the function findPotionByEffect', () => {
             filteredPotions.map(potion => expect(potion.effects.secondary.some(effect => effect.attribute === "manaRegeneration")));
         })
     })
+    describe('Test if the potions with notAnEffect secondary effect', () => {
+        const filteredPotions = findPotionByEffect(potions, "notAnEffect");
+        it('Test if the potions with notAnEffect are 0', () => {
+            expect(filteredPotions.length).toBe(0);
+        })
+        it('Test if the potions with notAnEffect secondary effect contains', () => {
+            filteredPotions.map(potion => expect(potion.effects.secondary.some(effect => effect.attribute === "notAnEffect")));
+        })
+    })
 
 })
