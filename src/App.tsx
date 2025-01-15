@@ -1,25 +1,27 @@
 import { useState } from 'react'
+import './index.css'
+import { Potion } from './types/Potion'
+import { potions } from './data/data'
+import PotionCard from './components/ItemCard'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [potionList, setPotionList] = useState<Potion[]>(potions)
 
   return (
     <>
-      
-      <h1>Vite + React</h1>
-      <div className="text-blue-500">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="">
+        {/* Inject the custom animation style for snake-like border effect */}
+        <div className="w-full h-full ">
+          <div className="grid grid-cols-5 grid-rows-5 flex-grow">
+            {potionList.map((potionArray: Potion) => {
+              return <PotionCard potion={potionArray} />
+            })}
+          </div>
+        </div>
       </div>
-      <p className="text-3xl font-bold underline">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
   )
-}
+};
 
 export default App
