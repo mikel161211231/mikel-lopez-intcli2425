@@ -1,5 +1,5 @@
 import { potions } from "../data/data";
-import { filterByLevelRequirement, getPotionsByRarity, listIngredients, findPotionByEffect } from "../helpers/potionHelpers"
+import { filterByLevelRequirement, getPotionsByRarity, listIngredients, findPotionByEffect, calculateCraftingTime } from "../helpers/potionHelpers"
 import { Potion } from "../types/Potion";
 
 
@@ -101,6 +101,46 @@ describe('Test the function findPotionByEffect', () => {
         })
         it('Test if the potions with notAnEffect secondary effect contains', () => {
             filteredPotions.map(potion => expect(potion.effects.secondary.some(effect => effect.attribute === "notAnEffect")));
+        })
+    })
+
+})
+
+describe('Test the function calculateCraftingTime on minutes', () => {
+    describe('Test if all the potions crafting time is correct', () => {
+        
+        it('Test if all the potions crafting time is 958 ', () => {
+            const totalTime = calculateCraftingTime(potions);
+            expect(totalTime).toBe(958);
+        })
+    })
+
+    describe('Test if the potions (Elixir of Eternal Flame & Stormcaller\'s Brew) crafting time is correct', () => {
+        const potionsList: Potion[] = [];
+        potionsList.push({...potions[0]});
+        potionsList.push({...potions[8]});
+        
+        it('Test if the potions crafting time is 165 ', () => {
+            const totalTime = calculateCraftingTime(potionsList);
+            expect(totalTime).toBe(165);
+        })
+    })
+
+    describe('Test if the potion (Stormcaller\'s Brew) crafting time is correct', () => {
+        const potionsList: Potion[] = [];
+        potionsList.push({...potions[8]});
+        
+        it('Test if the potions crafting time is 120 ', () => {
+            const totalTime = calculateCraftingTime(potionsList);
+            expect(totalTime).toBe(120);
+        })
+    })
+    describe('Test if without potions crafting time is correct', () => {
+        const potionsList: Potion[] = [];
+        
+        it('Test if without potions crafting time is 0 ', () => {
+            const totalTime = calculateCraftingTime(potionsList);
+            expect(totalTime).toBe(0);
         })
     })
 
