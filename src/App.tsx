@@ -5,7 +5,7 @@ import { potions } from './data/data'
 import PotionCard from './components/ItemCard'
 
 function App() {
-  const [potionList, setPotionList] = useState<Potion[]>()
+  const [potionList, setPotionList] = useState<Potion[]>(potions)
 useEffect(() => {
   setPotionList(potionList)
 },[])
