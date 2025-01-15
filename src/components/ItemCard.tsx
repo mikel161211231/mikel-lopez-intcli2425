@@ -6,7 +6,7 @@ interface PotionProps {
 
 const PotionCard: React.FC<PotionProps> = ({ potion }) => {
 
-    const image: string = "./src/public/" + potion.image;
+    const image: string = "./public/" + potion.image;
     return (
         <>
             <div className="pt-16 pl-6 pr-6 text-center ">
