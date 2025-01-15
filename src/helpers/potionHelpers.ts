@@ -24,9 +24,28 @@ export function listIngredients(potion:Potion): string[] {
     return ingredientsList;
 }
 
+// Encuentra todas las pociones que otorgan un efecto secundario especifico
+export function findPotionByEffect(potions:Potion[], secondaryEffect:string): Potion[] {
+    const filteredPotions: Potion[] = [];
+    
+    
+    for (let i = 0; i < potions.length; i++) {
+        const potion = potions[i];
+        
+        for (let j = 0; j < potion.effects.secondary.length; j++) {
+            const effect = potion.effects.secondary[j];
+            if (effect.attribute === secondaryEffect) {
+                filteredPotions.push(potion);
+            }
+        }
+    }
+    return filteredPotions;
+}
+
 
 module.exports = {
     filterByLevelRequirement,
     getPotionsByRarity,
-    listIngredients
+    listIngredients,
+    findPotionByEffect
 }
