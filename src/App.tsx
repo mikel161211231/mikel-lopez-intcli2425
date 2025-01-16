@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <div className="">
+      <div className="bg-darkBlue">
         {/* Inject the custom animation style for snake-like border effect */}
         <div className="w-full h-full ">
           <div className="grid grid-cols-5 grid-rows-5 flex-grow">
