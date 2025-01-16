@@ -10,8 +10,6 @@ const PotionCard: React.FC<PotionProps> = ({ potion }) => {
 
     const [openModal, setOpenModal] = useState<boolean>(false);
 
-    const image: string = "./src/public/" + potion.image;
-
     return (
         <>
             <div className="pt-8 pl-6 pr-6 text-center ">
@@ -21,7 +19,7 @@ const PotionCard: React.FC<PotionProps> = ({ potion }) => {
 
                     </div>
                     <div className="place-items-center">
-                        <img src={image} alt={potion.name} className="h-48 w-48 object-cover md:h-48 md:w-48 rounded-full " />
+                        <img src={potion.image} alt={potion.name} className="h-48 w-48 object-cover md:h-48 md:w-48 rounded-full " />
                     </div>
 
 
