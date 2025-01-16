@@ -4,9 +4,10 @@ import { Potion } from './types/Potion'
 import { potions } from './data/data'
 import PotionCard from './components/ItemCard'
 import CraftTimeButton from './components/CraftTimeButton'
+import RarityFilter from './components/RarityFilter'
 
 function App() {
-  const [potionList] = useState<Potion[]>(potions)
+  const [potionList, setPotionList] = useState<Potion[]>(potions)
 
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
             })}
           </div>
           <div>
+            <RarityFilter potions={potionList}/>
             <CraftTimeButton potions={potionList}/>
           </div>
         </div>
