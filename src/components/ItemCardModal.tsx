@@ -123,9 +123,6 @@ const PotionCardModal: React.FC<PotionCardModalProps> = ({ potion, setOpenModal 
                         </div>
                     </div>
 
-
-
-
                     <div className="mt-8 place-self-center">
                         <button onClick={() => setOpenModal()} className="text-medievalSepia border-2 rounded-lg border-black pl-6 pr-6 hover:bg-darkSepia">Close</button>
                     </div>

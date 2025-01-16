@@ -55,11 +55,11 @@ export function calculateCraftingTime(potions:Potion[]): number {
     return totalCraftingTime;
 }
 
-module.exports = {
-    filterByLevelRequirement,
-    getPotionsByRarity,
-    listIngredients,
-    findPotionByEffect,
-    calculateCraftingTime
+// module.exports = {
+//     filterByLevelRequirement,
+//     getPotionsByRarity,
+//     listIngredients,
+//     findPotionByEffect,
+//     calculateCraftingTime
 
-}
+// }
