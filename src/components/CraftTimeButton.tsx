@@ -16,13 +16,11 @@ const CraftTimeButton: React.FC<CraftTimeButtonProps> = ({ potions }) => {
 
     return (
         <>
-            <div className="grid grid-cols-2 grid-rows-1 flex-grow mt-2">
-                <div className="text-lg text-medievalSepia">
-                    <button onClick={calculateCraftTime}>Get craft time</button>
-                </div>
-                <div className="text-lg text-medievalSepia">
+            <div className="mt-4 grid grid-cols-2 grid-rows-1 flex-grow">
+                <div className="">
+                    <button onClick={calculateCraftTime} className="text-xl text-darkSepia">Get the craft time</button>
                     {(craftTime !== -1) && (
-                        <p>Crafting time is {craftTime} minutes</p>
+                        <p className="text-lg text-medievalSepia">Crafting time is {craftTime} minutes</p>
                     )}
                 </div>
             </div>
