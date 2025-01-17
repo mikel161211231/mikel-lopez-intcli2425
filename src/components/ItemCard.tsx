@@ -18,16 +18,19 @@ const PotionCard: React.FC<PotionProps> = ({ potion }) => {
                         <h4 className="text-xl text-medievalSepia">{potion.name}</h4>
 
                     </div>
-                    <div className="place-items-center">
-                        <img src={potion.image} alt={potion.name} className="h-48 w-48 object-cover md:h-48 md:w-48 rounded-full " />
-                    </div>
+                    <div className="">
+                        <div className="place-items-center">
+                            <img src={potion.image} alt={potion.name} className=" w-48 h-48 ml-8 place-self-center rounded-full " />
+                        </div>
 
 
-                    <div className="text-sm pt-4">
-                        <p className="text-sm text-darkSepia">Rarity is {potion.rarity}</p>
-                        <p className="text-sm text-darkSepia">Boss {potion.meta.availability.drop_rate.boss}</p>
-                        <p className="text-sm text-darkSepia">Drop rate  {potion.meta.availability.drop_rate.chance}</p>
+                        <div className="text-sm pt-4">
+                            <p className="text-sm text-darkSepia">Rarity is {potion.rarity}</p>
+                            <p className="text-sm text-darkSepia">Boss {potion.meta.availability.drop_rate.boss}</p>
+                            <p className="text-sm text-darkSepia">Drop rate  {potion.meta.availability.drop_rate.chance}</p>
+                        </div>
                     </div>
+
                     <div className="mt-4">
                         <button onClick={() => setOpenModal(true)} className="text-medievalSepia border-2 rounded-lg border-black pl-6 pr-6 hover:bg-darkSepia">More Info</button>
                     </div>
