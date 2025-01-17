@@ -7,19 +7,52 @@ interface PotionCardModalProps {
 
 const PotionCardModal: React.FC<PotionCardModalProps> = ({ potion, setOpenModal }) => {
 
-    const image: string = "./src/public/" + potion.image;
     const ingredientsClassName: string = "grid grid-cols-" + potion.ingredients.length + " grid-rows-1 flex-grow";
     const effectsClassName: string = "grid grid-cols-" + potion.effects.secondary.length + " grid-rows-1 flex-grow";
 
     return (
         <>
             <div className="fixed inset-0 flex justify-center items-center z-50 animate-fadeIn ">
-                <div className="p-20 bg-darkBlue border-2 rounded-lg flex flex-col text-medievalSepia">
-                    <h2 className="text-5xl px-6 mt-5  text-center place-self-center ">{potion!.name}</h2>
+                <div className="p-10 bg-darkBlue border-4 border-double	border-darkSepia rounded-lg flex flex-col text-medievalSepia">
+                    <h2 className="text-5xl px-6 mt-5 text-center place-self-center ">{potion!.name}</h2>
 
                     <div className="mt-5 grid grid-cols-2 grid-rows-1 flex-grow">
                         <div className="flex-col place-self-center">
-                            <img src={image} alt={potion.name} className="object-cover md:h-48 md:w-48 rounded-full	" />
+                            <img src={potion.image} alt={potion.name} className="object-cover md:h-64 md:w-64 rounded-full	place-self-center" />
+
+                            {/* RENDER WARNING */}
+                            <div className="mt-4">
+                                <p className="text-xl text-darkSepia text-center place-self-center">Warning</p>
+                                {/* RENDER RESTRICTION LEVEL */}
+                                <div className="">
+                                    {potion.usage.restrictions.warnings.map((warning) => {
+                                        return (
+                                            <div className=" mt-2">
+                                                {/* RENDER WARNING */}
+                                                <p className="text-lg text-medievalSepia ">{"-----> " + warning}</p>
+
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                            {/* RENDER INSTRUCTIONS */}
+                            <div className="mt-4">
+                                <p className="text-xl text-darkSepia text-center place-self-center">Instructions</p>
+                                {/* RENDER INSTRUCTIONS */}
+                                <div className="">
+                                    {potion.usage.instructions.map((instruction) => {
+                                        return (
+                                            <div className=" mt-2">
+                                                {/* RENDER INSTRUCTION */}
+                                                <p className="text-lg text-medievalSepia">{"-----> " + instruction}</p>
+
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+
                         </div>
                         <div className="flex-col place-self-center">
                             {/* RENDER EFFECTS */}
@@ -51,14 +84,16 @@ const PotionCardModal: React.FC<PotionCardModalProps> = ({ potion, setOpenModal 
                                             <div className=" mt-2">
                                                 {/* RENDER INGREDIENT NAME */}
                                                 <p className="text-lg text-medievalSepia text-center place-self-center">{"" + ingredient.name}</p>
-                                                <div className="grid grid-cols-1 grid-rows-2 flex-grow mt-2">
+                                                <div className="grid grid-cols-2 grid-rows- flex-grow mt-2">
                                                     {/* RENDER INGREDIENT LOCATION */}
                                                     <div className="ml-2 mr-2">
-                                                        <p className="text-sm text-medievalSepia">{"Location: " + ingredient.origin.location}</p>
+                                                        <p className="text-sm text-medievalSepia text-center place-self-center">{"Location"}</p>
+                                                        <p className="text-sm text-medievalSepia">{"-----> " + ingredient.origin.location}</p>
                                                     </div>
                                                     {/* RENDER INGREDIENT REGION */}
                                                     <div className="ml-2 mr-2">
-                                                        <p className="text-sm text-medievalSepia ">{"Region: " + ingredient.origin.region}</p>
+                                                        <p className="text-sm text-medievalSepia text-center place-self-center">{"Region"}</p>
+                                                        <p className="text-sm text-medievalSepia ">{"-----> " + ingredient.origin.region}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,29 +105,25 @@ const PotionCardModal: React.FC<PotionCardModalProps> = ({ potion, setOpenModal 
                             {/* RENDER RESTRICTIONS */}
                             <div className="mt-4">
                                 <p className="text-xl text-darkSepia text-center place-self-center">Restrictions</p>
-                                {/* RENDER RESTRICTION LEVEL */}
-                                <div className="">
-                                    <p className="text-lg text-medievalSepia text-center place-self-center">Level {potion.usage.restrictions.levelRequirement}</p>
-                                    <p className="text-lg text-medievalSepia text-center place-self-center">Class {potion.usage.restrictions.classRestrictions}</p>
+                                <div className="grid grid-cols-2 grid-rows-1 flex-grow mt-2">
+                                    {/* RENDER RESTRICTION LEVEL */}
+                                    <div className="">
+                                        <p className="text-lg text-medievalSepia text-center place-self-center">Level</p>
+                                        <p className="text-lg text-medievalSepia ">{"-----> " + potion.usage.restrictions.levelRequirement}</p>
+
+                                    </div>
+                                    {/* RENDER CLASS RESTRICTION */}
+                                    <div className="">
+                                        <p className="text-lg text-medievalSepia text-center place-self-center">Class</p>
+                                        {potion.usage.restrictions.classRestrictions.map((restringtionClass: string) => {
+                                            return <p className="text-sm text-medievalSepia">{"-----> " + restringtionClass}</p>
+                                        })}
+                                    </div>
                                 </div>
+
                             </div>
 
-                            {/* RENDER WARNING */}
-                            <div className="mt-4">
-                                <p className="text-xl text-darkSepia text-center place-self-center">Warning</p>
-                                {/* RENDER RESTRICTION LEVEL */}
-                                <div className="">
-                                    {potion.usage.restrictions.warnings.map((instruction) => {
-                                        return (
-                                            <div className=" mt-2">
-                                                {/* RENDER WARNING */}
-                                                <p className="text-lg text-medievalSepia text-center place-self-center">{"" + instruction}</p>
 
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </div>
 
                             {/* RENDER CRAFTING TIME */}
                             <div className="mt-4">
@@ -100,31 +131,16 @@ const PotionCardModal: React.FC<PotionCardModalProps> = ({ potion, setOpenModal 
                                 {/* RENDER CRAFTING TIME LEVEL */}
                                 <div className="">
                                     <p className="text-lg text-medievalSepia text-center place-self-center">{potion.crafting.time.amount} {potion.crafting.time.unit}</p>
-                                           </div>
-                            </div>
-
-                            {/* RENDER INSTRUCTIONS */}
-                            <div className="mt-4">
-                                <p className="text-xl text-darkSepia text-center place-self-center">Instructions</p>
-                                {/* RENDER INSTRUCTIONS */}
-                                <div className="">
-                                    {potion.usage.instructions.map((instruction) => {
-                                        return (
-                                            <div className=" mt-2">
-                                                {/* RENDER INSTRUCTION */}
-                                                <p className="text-lg text-medievalSepia text-center place-self-center">{"" + instruction}</p>
-
-                                            </div>
-                                        )
-                                    })}
                                 </div>
                             </div>
+
+
 
                         </div>
                     </div>
 
                     <div className="mt-8 place-self-center">
-                        <button onClick={() => setOpenModal()} className="text-medievalSepia border-2 rounded-lg border-black pl-6 pr-6 hover:bg-darkSepia">Close</button>
+                        <button onClick={() => setOpenModal()} className="text-medievalSepia border-2 rounded-lg border-black pt-4 pb-4 pl-8 pr-8 hover:bg-darkSepia">Close</button>
                     </div>
                 </div>
 
