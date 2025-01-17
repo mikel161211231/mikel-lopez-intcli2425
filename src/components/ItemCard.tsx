@@ -25,7 +25,8 @@ const PotionCard: React.FC<PotionProps> = ({ potion }) => {
 
                     <div className="text-sm pt-4">
                         <p className="text-sm text-darkSepia">Rarity is {potion.rarity}</p>
-                        <p className="text-sm text-darkSepia">Boss {potion.meta.availability.drop_rate.boss}  {potion.meta.availability.drop_rate.chance}</p>
+                        <p className="text-sm text-darkSepia">Boss {potion.meta.availability.drop_rate.boss}</p>
+                        <p className="text-sm text-darkSepia">Drop rate  {potion.meta.availability.drop_rate.chance}</p>
                     </div>
                     <div className="mt-4">
                         <button onClick={() => setOpenModal(true)} className="text-medievalSepia border-2 rounded-lg border-black pl-6 pr-6 hover:bg-darkSepia">More Info</button>
