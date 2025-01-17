@@ -28,7 +28,7 @@ export function findPotionByEffect(potions:Potion[], secondaryEffect:string): Po
         
         for (let j = 0; j < potion.effects.secondary.length; j++) {
             const effect = potion.effects.secondary[j];
-            if (effect.attribute === secondaryEffect) {
+            if (effect.attribute.includes(secondaryEffect) && (filteredPotions.findIndex((element:Potion) => element.id === potion.id) === -1)) {
                 filteredPotions.push(potion);
             }
         }
